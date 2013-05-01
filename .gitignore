@@ -1,0 +1,6 @@
+*.suo
+/TestResults
+/packages
+*.user
+/SampleOfKeepPagingState/obj
+/SampleOfKeepPagingState/bin

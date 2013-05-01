@@ -1,0 +1,19 @@
+﻿@model SampleOfKeepPagingState.Models.PeopleListViewModel
+
+<table>
+    <tr><th>Name</th><th></th></tr>
+
+@foreach (var person in Model.PeopleAtAPage) 
+{
+    <tr>
+        <td>@person.Name</td>
+        <td>| @Html.ActionLink("Details", "Details", new { id=person.Id })</td>
+    </tr>
+}
+</table>
+<div id="pageIndexLinks">
+    @for (int i = 1; i <= Model.NumberOfPages; i++)
+    {
+        <a href="#">@i</a>
+    }
+</div>
