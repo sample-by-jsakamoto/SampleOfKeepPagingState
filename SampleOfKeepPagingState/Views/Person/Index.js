@@ -1,17 +1,15 @@
 ﻿$(function () {
 
-    var sessionStateKey = "foo.bar";
+    var key = "foo.bar";
 
-    var listState = $.extend(
-        { pageIndex: 1 },
-        JSON.parse(sessionStorage.getItem(sessionStateKey) || "{}"));
+    var pageIndex = sessionStorage.getItem(key) || "1";
 
-    $("#peopleList").load("Person/ListHtml", { pageIndex: listState.pageIndex });
+    $("#peopleList").load("Person/ListHtml", { "pageIndex": pageIndex });
 
     $(document).on("click", "#pageIndexLinks a", function () {
-        var listState = { pageIndex: $(this).text() };
-        $("#peopleList").load("Person/ListHtml", listState);
-        sessionStorage.setItem(sessionStateKey, JSON.stringify(listState));
+        var pageIndex = $(this).text();
+        $("#peopleList").load("Person/ListHtml", { "pageIndex": pageIndex });
+        sessionStorage.setItem(key, pageIndex);
         return false;
     });
 });
